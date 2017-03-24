@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="google" content="notranslate" />
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AddInputListJs | Example1</title>
+	
+	<link href="http://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="example/example.css" rel="stylesheet">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="AddInputList.js"></script>
+	
+	<script>
+	var addInputList;
+	$(function(){
+		
+		addInputList = new AddInputList({
+			'parent_slt':'#par1',
+			'def_ent':{'text1':'','animal':null},
+		});
+		
+	});
+	
+	function getData(){
+		var data = addInputList.getData();
+
+		var json_str = JSON.stringify(data);
+		$('#res').html(json_str);
+		
+	}
+	
+	function addRow(){
+		var v = [1,2,4];
+		addInputList.addRow(v);
+	}
+	
+	function setData(){
+		
+		var data = [
+			{'sort_no':'52','text1':'ブタ','animal':'5'},
+			{'sort_no':'50','text1':'イヌ','animal':'4'},
+			{'sort_no':'99','text1':'ネコ','animal':'1'},
+		];
+		
+		addInputList.setData(data);
+	}
+	
+	function reset(){
+		addInputList.reset();
+	}
+	
+
+	</script>
+
+</head>
+<body>
+<div id="header" ><h1>AddInputListJs | Example1</h1></div>
+<div class="container">
+
+
+
+
+
+
+Add input element to input list. Further, get data,delete data.
+
+
+
+<a href="https://github.com/amaraimusi/AddInputListJs.git">GitHub</a><br>
+<br>
+
+<h2>Example 1</h2>
+<table>
+	<tbody id="par1">
+		<tr>
+			<td>
+				<span class="sort_no">1</span>
+			</td>
+			<td>
+				<input name="text1" type="text" value="test" />
+			</td>
+			<td>
+				<select name="animal" >
+					<option value="">-- NONE --</option>
+					<option value="1">cat</option>
+					<option value="2" selected>goat</option>
+					<option value="3">shark</option>
+					<option value="4">dog</option>
+					<option value="5">pig</option>
+				</select>
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<p>addRow</p>
+<input type="button" value="add" class="btn btn-success btn-xs" onclick="addRow();" /><br>
+<br>
+
+
+<p>output</p>
+<input type="button" value="Get selected data" class="btn btn-success btn-xs" onclick="getData();" />
+<div id="res"></div>
+<br>
+
+
+<p>set data</p>
+<input type="button" value="set data" class="btn btn-success btn-xs" onclick="setData();" />
+<br>
+
+
+<p>reset</p>
+<input type="button" value="reset" class="btn btn-success btn-xs" onclick="reset();" />
+<br>
+
+
+
+
+
+
+
+
+
+
+
+<div class="yohaku"></div>
+</div><!-- content -->
+<div id="footer">(C) <a href="http://amaraimusi.sakura.ne.jp/" target="blank">kenji uehara</a> 2017-3-23</div>
+</body>
+</html>
