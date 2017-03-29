@@ -103,8 +103,6 @@ var AddInputList =function(param){
 		// Add row to last,And get it row again.
 		par.append(first_row[0].outerHTML);
 		var newRow = par.find(row_slt).eq(-1);
-		console.log('newRow');//■■■□□□■■■□□□■■■□□□)
-		console.log(newRow);//■■■□□□■■■□□□■■■□□□)
 		
 		// Set default value to new row.
 		for(var field in param.def_ent){
@@ -113,16 +111,12 @@ var AddInputList =function(param){
 			if(!valElm[0]){
 				throw new Error("Not find '" + field + "' elements from new row." );
 			}
-			console.log('valElm');//■■■□□□■■■□□□■■■□□□)
-			console.log(valElm);//■■■□□□■■■□□□■■■□□□)
 			var def_val = param.def_ent[field];
 			_setValueEx(valElm,def_val);
 		}
 
 		// Set a next sort no;
 		var sortNoElm = _findInParentEx(newRow,sort_field);
-		console.log('sortNoElm');//■■■□□□■■■□□□■■■□□□)
-		console.log(sortNoElm);//■■■□□□■■■□□□■■■□□□)
 		var next_sort_no = max_sort_no + 1;
 		_setValueEx(sortNoElm,next_sort_no);
 		
