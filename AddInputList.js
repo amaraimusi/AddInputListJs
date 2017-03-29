@@ -4,9 +4,9 @@
  * @note
  * Add input element to input list. Further, get data,delete data.
  * 
- * @varsion 1.0
+ * @varsion 1.0.1
  * @auther kenji uehara
- * @date 2017-3-24
+ * @date 2017-3-24 | 2017-3-29
  * 
  * @param param
  * - parent_slt : Wrapper element of TABLE element.
@@ -96,19 +96,33 @@ var AddInputList =function(param){
 		// Get first row element.
 		var first_row = par.find(row_slt).eq(0);
 		
+		if(!first_row[0]){
+			throw new Error("Fail get first row.(" + param.parent_slt + ':row_slt=' + row_slt + ")" );
+		}
+		
 		// Add row to last,And get it row again.
 		par.append(first_row[0].outerHTML);
 		var newRow = par.find(row_slt).eq(-1);
+		console.log('newRow');//■■■□□□■■■□□□■■■□□□)
+		console.log(newRow);//■■■□□□■■■□□□■■■□□□)
 		
 		// Set default value to new row.
 		for(var field in param.def_ent){
 			var valElm = _findInParentEx(newRow,field);
+			
+			if(!valElm[0]){
+				throw new Error("Not find '" + field + "' elements from new row." );
+			}
+			console.log('valElm');//■■■□□□■■■□□□■■■□□□)
+			console.log(valElm);//■■■□□□■■■□□□■■■□□□)
 			var def_val = param.def_ent[field];
 			_setValueEx(valElm,def_val);
 		}
 
 		// Set a next sort no;
 		var sortNoElm = _findInParentEx(newRow,sort_field);
+		console.log('sortNoElm');//■■■□□□■■■□□□■■■□□□)
+		console.log(sortNoElm);//■■■□□□■■■□□□■■■□□□)
 		var next_sort_no = max_sort_no + 1;
 		_setValueEx(sortNoElm,next_sort_no);
 		
@@ -201,6 +215,11 @@ var AddInputList =function(param){
 		
 		// Get HTML of first row element.
 		var first_row = par.find(row_slt).eq(0);
+		
+		if(!first_row[0]){
+			throw new Error("Fail get first row.(" + param.parent_slt + ':row_slt=' + row_slt + ")" );
+		}
+		
 		var row_html = first_row[0].outerHTML;
 		
 		// Reset.
